@@ -53,6 +53,9 @@ module.exports = () => {
         {
           test: /\.html$/i,
           loader: "html-loader",
+          options: {
+            minimize: false
+          }
         },
         {
           test: /\.(scss)$/,
@@ -93,6 +96,7 @@ module.exports = () => {
       minimizer: [
         new TerserPlugin({
           minify: TerserPlugin.uglifyJsMinify,
+          extractComments: true,
         }),
       ],
     },
