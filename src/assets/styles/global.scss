@@ -1,0 +1,16 @@
+@use "sass:map";
+@use "sass:math";
+
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+@import "./variables";
+@import "./fonts";
+@import "./general";
+
+
+@import "./banner";
+@import "./info";
+@import "./navigation";
+@import "./article";

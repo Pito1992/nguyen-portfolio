@@ -1,0 +1,13 @@
+$font-primary: 'UTM Avo';
+$font-secondary: 'DejaVuSans';
+
+$color-primary: #f2c204;
+$color-light: #fff;
+$color-dark: #010101;
+
+$breakpoints: 'xs', 'sm', 'md', 'lg', 'xl', 'xxl';
+
+@function toEm($number, $fontSize: 16) {
+  $value: math.div(math.div($number, ($number * 0 + 1)), $fontSize);
+  @return #{$value}em;
+}

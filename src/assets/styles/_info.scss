@@ -1,0 +1,142 @@
+@import "./variables";
+
+$fontSize: (
+  "xs": 12px,
+  "sm": 16px,
+  "md": 22px,
+  "lg": 28px,
+  "xl": 36px,
+  "xxl":44px,
+);
+
+.info {
+  @each $breakpoint in $breakpoints {
+    $value: map.get($fontSize, $breakpoint);
+    @if $value {
+      @include media-breakpoint-only($breakpoint) {
+        font-size: map.get($fontSize, $breakpoint);
+      }
+    }
+  }
+
+  padding: toEm(152, 44) 0 toEm(138, 44);
+
+  .table {
+    tr {
+      td {
+        border: 0;
+        padding: 0 0 toEm(56, 44);
+
+      }
+      @include media-breakpoint-down(md) {
+        &:last-child {
+          td {
+            padding-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .info-title {
+    font-weight: bold;
+    font-size: toEm(70, 44);
+    line-height: 1;
+    height: 1em;
+    margin-bottom: toEm(64, 70);
+  }
+
+  .info-role {
+    display: inline-block;
+    border-radius: 0.3125em;
+    font-size: toEm(map.get($display-font-sizes, 3) * 16, 44);
+    height: 1.6875em;
+    text-align: center;
+    line-height: 1.4;
+    white-space: nowrap;
+    margin-bottom: 1em;
+    background-color: $color-primary;
+    color: $color-light;
+    padding: 0 0.6875em;
+  }
+
+  .info-paragraph {
+    font-size: toEm(map.get($display-font-sizes, 5) * 16, 44);
+    line-height: 1.2;
+    margin-bottom: 1.25em;
+    padding-right: 1.5em;
+  }
+
+  .tag-list {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em 2em;
+    padding: 0;
+    margin: 0;
+    font-size: 1em;
+
+    @include media-breakpoint-down(md) {
+      gap: 0.5em 1em;
+    }
+
+    .tag-item {
+      display: block;
+      padding: 0 0.5em;
+      white-space: nowrap;
+      height: toEm(92, 44);
+      border-radius: toEm(28, 44);
+      background-color: $color-light;
+      border: toEm(5, 44) solid $color-dark;
+      flex: 0 0 auto;
+      line-height: 1.6;
+    }
+  }
+
+  .info-text {
+    font-size: 1em;
+    line-height: 1.2;
+  }
+
+  .info-skill-level {
+    @include media-breakpoint-down(sm) {
+      margin-bottom: 0;
+    }
+  }
+
+  .skill-rating {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0 toEm(36, 22);
+    font-size: toEm(22, 44);
+
+    .skill-dot {
+      font-size: 1em;
+      flex: 0 0 auto;
+      display: block;
+      width: 1em;
+      height: 1em;
+      border-radius: 50%;
+      border: toEm(3, 22) solid $color-dark;
+      background-color: transparent;
+
+      &.checked {
+        background-color: $color-dark;
+      }
+    }
+  }
+
+  .info-skill-badge {
+    display: block;
+    font-size: 1em;
+    height: 1.875em;
+    line-height: 1.6;
+  }
+
+  .info-detail {
+    @include media-breakpoint-down(md) {
+      margin-bottom: 1.5em;
+    }
+  }
+}

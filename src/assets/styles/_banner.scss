@@ -1,0 +1,251 @@
+@import "./variables";
+
+$fontSize: (
+  "xs": 5px,
+  "sm": 5.25px,
+  "md": 7px,
+  "lg": 9.6px,
+  "xl": 11.4px,
+  "xxl":13px,
+);
+
+$fontSizeSocial: (
+  "xs": 11px,
+  "sm": 13px,
+  "md": 19px,
+  "lg": 21px,
+  "xl": 24px,
+  "xxl": 30px,
+);
+
+.banner-social-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: toEm(30);
+  gap: 1em 2em;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+
+  .banner-social-link {
+    display: flex;
+    align-items: flex-end;
+    white-space: nowrap;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .icon {
+      font-size: toEm(50, 30);
+      display: block;
+      margin-right: toEm(22, 30);
+      flex: 0 0 auto;
+
+      &, svg {
+        width: 1em;
+        height: 1em;
+        vertical-align: top;
+      }
+    }
+    
+    &, a {
+      color: $color-light;
+      text-decoration: none;
+    }
+  }
+}
+
+.banner {
+  width: 100vw;
+  padding: toEm(120) 0;
+
+  @each $breakpoint in $breakpoints {
+    $value: map.get($fontSize, $breakpoint);
+    @if $value {
+      @include media-breakpoint-only($breakpoint) {
+        font-size: map.get($fontSize, $breakpoint);
+      }
+    }
+  }
+
+  @media (min-width: 1920px) {
+    font-size: 1rem;
+  }
+
+  #{&}-box {
+    width: 100%;
+    color: $color-light;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: toEm(120) toEm(24);
+
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+      width: toEm(92);
+      height: 100%;
+      position: absolute;
+      border-top: toEm(6) solid $color-primary;
+      border-bottom: toEm(6) solid $color-primary;
+    }
+
+    &:before {
+      border-left: toEm(6) solid $color-primary;
+      top: 0;
+      left: 0;
+      border-top-left-radius: toEm(24);
+      border-bottom-left-radius: toEm(24);
+    }
+
+    &:after {
+      border-right: toEm(6) solid $color-primary;
+      bottom: 0;
+      right: 0;
+      border-top-right-radius: toEm(24);
+      border-bottom-right-radius: toEm(24);
+    }
+
+    .hero-top,
+    .hero-super-text,
+    .hero-text,
+    .hero-bottom {
+      display: block;
+      height: 1em;
+
+      
+    }
+
+    .hero-super-text,
+    .hero-text {
+      @include media-breakpoint-up(sm) {
+        white-space: nowrap;
+      }
+    }
+
+    .hero-top {
+      font-size: toEm(56);
+      font-weight: bold;
+      position: absolute;
+      line-height: 0.92;
+      top: -0.5em;
+      left: toEm(132, 56);
+      right: toEm(92, 56);
+      display: flex;
+      white-space: nowrap;
+
+      &:before,
+      &:after {
+        content: '';
+        display: block;
+        flex-shrink: 0;
+      }
+      &:before {
+        height: toEm(6, 56);
+        border-top: toEm(6, 56) solid $color-primary;
+        margin-top: toEm(28, 56);
+        flex-grow: 1;
+        order: 1;
+      }
+      &:after {
+        margin-top: toEm(12, 56);
+        width: toEm(38, 56);
+        height: toEm(38, 56);
+        border-radius: 50%;
+        border: toEm(6, 56) solid $color-primary;
+        margin-left: toEm(32, 56);
+      }
+    }
+
+    .hero-super-text {
+      font-size: toEm(350);
+      line-height: 0.8;
+      display: block;
+      text-align: center;
+
+      @include media-breakpoint-down(sm) {
+        height: auto;
+        line-height: 1.2;
+        font-size: 20vw
+      }
+    }
+
+    .hero-text {
+      font-size: toEm(80);
+      line-height: 0.8;
+      display: block;
+      text-align: center;
+      font-weight: bold;
+
+      @include media-breakpoint-down(sm) {
+        height: auto;
+        line-height: 1.2;
+      }
+    }
+
+    .hero-bottom {
+      font-size: toEm(72);
+      position: absolute;
+      line-height: 0.6;
+      bottom: -0.5em;
+      left: toEm(92, 72);
+      right: toEm(132, 72);
+      display: flex;
+      white-space: nowrap;
+
+      &:before,
+      &:after {
+        content: '';
+        display: block;
+        flex-shrink: 0;
+      }
+      &:before {
+        height: toEm(6, 72);
+        border-top: toEm(6, 72) solid $color-primary;
+        margin-top: toEm(31, 72);
+        flex-grow: 1;
+        order: -2;
+      }
+      &:after {
+        margin-top: toEm(14, 72);
+        width: toEm(38, 72);
+        height: toEm(38, 72);
+        border-radius: 50%;
+        border: toEm(6, 72) solid $color-primary;
+        margin-right: toEm(32, 72);
+        order: -1;
+      }
+    }
+  }
+  #{&}-name {
+    color: $color-dark;
+    background-color: $color-primary;
+    border-radius: 0.4em;
+    width: toEm(770, 60);
+    height: toEm(112, 60);
+    font-size: toEm(60);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  &#{&}-top #{&}-box {
+    margin-bottom: toEm(78);
+    @include media-breakpoint-up(sm) {
+      height: toEm(470);
+    }
+  }
+  &#{&}-bottom #{&}-box {
+    margin-bottom: toEm(168);
+
+    @include media-breakpoint-up(sm) {
+      height: toEm(240);
+    }
+  }
+}

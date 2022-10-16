@@ -1,0 +1,72 @@
+
+@import "./variables";
+
+$fontSize: (
+  "xs": 5px,
+  "sm": 5.25px,
+  "md": 7px,
+  "lg": 9.6px,
+  "xl": 11.4px,
+  "xxl":13px,
+);
+
+.navigation {
+  padding: toEm(120) 0;
+  @each $breakpoint in $breakpoints {
+    $value: map.get($fontSize, $breakpoint);
+    @if $value {
+      @include media-breakpoint-only($breakpoint) {
+        font-size: map.get($fontSize, $breakpoint);
+      }
+    }
+  }
+
+  @media (min-width: 1920px) {
+    font-size: 1rem;
+  }
+
+  .decor-text {
+    display: flex;
+    font-size: toEm(140);
+    line-height: 1.1;
+    color: $color-light;
+
+    @include media-breakpoint-up(sm) {
+      flex-direction: column;
+    }
+  }
+
+  .pillbox {
+    // font-size: $info-font-size;
+    font-size: toEm(80);
+    height: 1.5em;
+    line-height: 1.4;
+    color: $color-dark;
+  }
+
+  .menu {
+    counter-reset: menu;
+    font-size: toEm(50);
+    padding: 0;
+    // display: flex;
+    // flex-wrap: wrap;
+    // gap: 32px 0;
+    // max-width: 800px;
+    margin: 0;
+
+    td {
+      border: 0;
+      padding: toEm(16, 50) 0px;
+
+      &:nth-child(odd) {
+        padding-right: 3.75em;
+      }
+    }
+    
+    @at-root #{&}-item {
+      color: $color-light;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+  }
+}

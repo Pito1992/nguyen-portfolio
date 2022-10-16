@@ -1,0 +1,28 @@
+@import "./variables";
+
+html, body {
+  font-family: $font-primary;
+}
+
+body {
+  background-image: url('../images/bg-black-texture.jpg?width=1920&height=960');
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.container {
+  @media (min-width: 1920px) {
+    max-width: 1624px;
+  }
+}
+
+.pillbox {
+  display: inline-block;
+  border-radius: toEm(28);
+  text-align: center;
+  white-space: nowrap;
+  background-color: $color-primary;
+  color: $color-dark;
+  padding: 0 0.6875em;
+}

@@ -1,0 +1,12 @@
+@import './variables';
+
+@font-face {
+  font-family: $font-primary;
+  src: url('../fonts/utm-avo/utm-avo.woff') format('woff');
+}
+
+@font-face {
+  font-family: $font-primary;
+  font-weight: bold;
+  src: url('../fonts/utm-avo/utm-avo-bold.woff') format('woff');
+}
